@@ -1,3 +1,4 @@
 wireshark
 nmap
 zenmap
+ophcrack
