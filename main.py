@@ -14,7 +14,7 @@ def blacklistPrograms():
     for program in blacklistedPrograms:
         os.system("apt purge %s -y"%(program))
 def moderateFiles():
-    badExtensions = [".mp4", ".mp3", ".jpg", ".png", ".avi", ".ogg", ".cpp", ".mov"]
+    badExtensions = [".mp4", ".mp3", ".jpg", ".png", ".avi", ".ogg", ".cpp", ".mov", "txt"]
     os.system("echo '' > SuspiciousFilesLog.txt")
     for extension in badExtensions:
         os.system("find / -name \"*%s\" >> SuspiciousFilesLog.txt"%(extension))
