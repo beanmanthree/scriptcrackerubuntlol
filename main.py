@@ -1,5 +1,8 @@
 import os
 import traceback
+
+newPass = "Cyb3rP@tri0t"
+
 def firewall():
     os.system("ufw enable") #firewall
     os.system("ufw allow 22") #ssh
@@ -26,7 +29,7 @@ def auditUsers():
             if int(tokenizedLine[2]) >= 1000 and int(tokenizedLine[2]) != 65534:
                 users.add(tokenizedLine[0])
     for user in list(users):
-        os.system("echo \"Cyb3rP@tri0t\nCyb3rP@tri0t\" | passwd %s"%(user))
+        os.system(f"echo \"{newPass}\n{newPass}\" | passwd %s"%(user))
     allowedUsers = set()
     with open("AllowedUsers.txt") as allowed:
         for line in allowed.readlines():
