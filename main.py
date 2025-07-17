@@ -28,7 +28,11 @@ def fixAll():
 def firewall():
     os.system("ufw enable") #firewall
     os.system("ufw allow 22") #ssh
+    os.system("ufw deny 20") #ftp
     os.system("ufw deny 21") #ftp
+    os.system("ufw deny 23") #telnet
+    os.system("ufw deny 139") #smb
+    os.system("ufw deny 445") #smb
 def update():
     os.system("apt update")
     os.system("apt upgrade")
