@@ -81,6 +81,8 @@ def general():
 def antivirusScan():
     os.system("freshclam")
     os.system("clamscan -r --bell -i / >> virus-scan.txt")
+def checkCron():
+    os.system("ls /var/spool/cron/crontabs > crontabUsers.txt")
 def ssh():
     sshNeeded = input("Is SSH Needed? (Y/N): ")
     sshPort = int(input())
@@ -137,6 +139,7 @@ def fixAll():
     passwordFix()
     blacklistPrograms()
     moderateFiles()
+    checkChron()
     auditUsers()
     disableGuest()
     ssh()
