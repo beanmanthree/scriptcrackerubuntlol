@@ -7,6 +7,24 @@ if os.geteuid() != 0:
 
 newPass = "Cyb3rP@tri0t"
 
+def fixAll():
+    disableRoot()
+    firewall()
+    update()
+    disablePermissions()
+    passwordFix()
+    blacklistPrograms()
+    moderateFiles()
+    serviceAudit()
+    findWorldWritable()
+    fixWorldWritable()
+    checkChron()
+    auditUsers()
+    disableGuest()
+    ssh()
+    general()
+    antivirusScan()
+
 def firewall():
     os.system("ufw enable") #firewall
     os.system("ufw allow 22") #ssh
@@ -139,22 +157,6 @@ def disableGuest():
     os.system("echo \"net.ipv4.conf.all.rp_filter = 1\" >> /etc/sysctl.conf")
     os.system("echo \"net.ipv4.conf.default.rp_filter = 1\" >> /etc/sysctl.conf")
     os.system("sysctl -p")
-def fixAll():
-    disableRoot()
-    firewall()
-    update()
-    disablePermissions()
-    passwordFix()
-    blacklistPrograms()
-    moderateFiles()
-    serviceAudit()
-    findWorldWritable()
-    fixWorldWritable()
-    checkChron()
-    auditUsers()
-    disableGuest()
-    ssh()
-    antivirusScan()
 exit = True
 begin = True
 while exit:
