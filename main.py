@@ -1,6 +1,10 @@
 import os
 import traceback
 
+if os.geteuid() != 0:
+    print("You must run this script as root.")
+    exit(1)
+
 newPass = "Cyb3rP@tri0t"
 
 def firewall():
@@ -74,6 +78,9 @@ def general():
     os.system("apt install clamtk -y")
     os.system("apt install libpam-cracklib -y")
     os.system("apt install expect -y")
+def antivirusScan():
+    os.system("freshclam")
+    os.system("clamscan -r --bell -i / >> virus-scan.txt")
 def ssh():
     sshNeeded = input("Is SSH Needed? (Y/N): ")
     sshPort = int(input())
@@ -133,6 +140,7 @@ def fixAll():
     auditUsers()
     disableGuest()
     ssh()
+    antivirusScan()
 exit = True
 begin = True
 while exit:
