@@ -80,9 +80,17 @@ def general():
     os.system("apt install expect -y")
 def antivirusScan():
     os.system("freshclam")
-    os.system("clamscan -r --bell -i / >> virus-scan.txt")
+    os.system("clamscan -r --bell -i / >> virusScan.txt")
 def checkCron():
     os.system("ls /var/spool/cron/crontabs > crontabUsers.txt")
+def serviceAudit():
+    os.system("systemctl list-units --type=service --no-pager >> runningServices.txt")
+def findWorldWritable():
+    os.system("find / -xdev -type f -perm -0002 >> worldWritableLog.txt 2>/dev/null")
+    os.system("find / -xdev -type d -perm -0002 >> worldWritableLog.txt 2>/dev/null")
+def fixWorldWritable():
+    os.system("find / -xdev -type f -perm -0002 -exec chmod o-w {} \\; 2>/dev/null")
+    os.system("find / -xdev -type d -perm -0002 -exec chmod o-w {} \\; 2>/dev/null")
 def ssh():
     sshNeeded = input("Is SSH Needed? (Y/N): ")
     sshPort = int(input())
