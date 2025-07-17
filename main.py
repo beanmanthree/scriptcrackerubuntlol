@@ -73,7 +73,7 @@ def passwordFix():
     os.system("echo \"auth required pam_wheel.so\" /etc/pam.d/su")
 def general():
     os.system("apt install clamav -y")
-    os.system("apt instal RKhunter -y")
+    os.system("apt install RKhunter -y")
     os.system("apt install chrootkit -y")
     os.system("apt install clamtk -y")
     os.system("apt install libpam-cracklib -y")
@@ -147,6 +147,9 @@ def fixAll():
     passwordFix()
     blacklistPrograms()
     moderateFiles()
+    serviceAudit()
+    findWorldWritable()
+    fixWorldWritable()
     checkChron()
     auditUsers()
     disableGuest()
