@@ -22,6 +22,7 @@ def fixAll():
     auditUsers()
     disableGuest()
     ssh()
+    enableDisableSystemctl()
     general()
     antivirusScan()
 
@@ -113,6 +114,23 @@ def findWorldWritable():
 def fixWorldWritable():
     os.system("find / -xdev -type f -perm -0002 -exec chmod o-w {} \\; 2>/dev/null")
     os.system("find / -xdev -type d -perm -0002 -exec chmod o-w {} \\; 2>/dev/null")
+def enableDisableSystemctl():
+    #os.system('sudo systemctl list_units --type=service')
+    os.system('sudo systemctl restart sshd')
+    os.system('sudo systemctl enable cron')
+    os.system('sudo systemctl enable rsyslog')
+    os.system('sudo systemctl enable network-manager')
+    os.system('sudo systemctl enable systemd-timesyncd')
+
+    os.system('sudo systemctl disable nginx')
+    os.system('sudo systemctl disable telnet')
+    os.system('sudo systemctl disable ftp')
+    os.system('sudo systemctl disable samba')
+    os.system('sudo systemctl disable apache2')
+    os.system('sudo systemctl disable bluetooth')
+    os.system('sudo systemctl disable avahi-daemon')
+    os.system('sudo systemctl disable rpcbind')
+    os.system('sudo systemctl disable nfs-server')
 def ssh():
     sshNeeded = input("Is SSH Needed? (Y/N): ")
     sshPort = int(input())
