@@ -48,6 +48,7 @@ def moderateFiles():
     os.system("echo '' > SuspiciousFilesLog.txt")
     for extension in badExtensions:
         os.system("find / -name \"*%s\" >> SuspiciousFilesLog.txt"%(extension))
+    #To remove: find /home -type f (-iname "*.mp3" -o -iname "*.mp4" -o -iname "*.mov" -o -iname "*.avi" -o -iname "*.jpg" -o -iname "*.png" ) -delete
 def auditUsers():
     users = set()
     with open("/etc/passwd") as etcPasswd:
